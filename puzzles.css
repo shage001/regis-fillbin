@@ -1,0 +1,40 @@
+.puzzle {
+	width: 480px;
+	height: 480px;
+	border: 1px solid black;
+	position: absolute;
+	top: 7px;
+	left: 7px;
+}
+
+.puzzle-large {
+	width: 672px;
+	height: 672px;
+	border: 1px solid black;
+	position: absolute;
+	top: 7px;
+	left: 7px;
+}
+
+.square {
+	width: 30px;
+	height: 30px;
+	border: 1px solid black;
+	display: inline-block;
+	background-color: #fff;
+	color: #000;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 32px;
+	font-size: 1.25em;
+	font-family: sans-serif;
+	position: relative;
+}
+
+.blank {
+	background-color: #000;
+}
+
+.incorrect {
+	color: red;
+}

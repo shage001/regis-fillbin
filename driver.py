@@ -1,0 +1,38 @@
+'''
+Sam Hage
+Thesis
+Driver fro the puzzle solver.
+12/2015
+
+TODO:
+- improve performance with uncompressed data
+- improve performance with custom scraped data
+- partition data based on answer length
+
+LIMITATIONS:
+- wordplay/humor
+- in-puzzle references
+- multiple letters per square / non-alphanumeric characters
+- rich text (accents, etc)
+'''
+
+import sys
+import puzzle_solver
+import evaluate
+
+WEEK = [ 'oct0906', 'dec2899', 'jun0497', 'nov0515', 'nov0615', 'apr2796', 'nov0815' ]
+
+def main():
+	"""
+	**********************************************************************************************************************
+	Run on file execution
+	"""
+	puzzle_name = WEEK[0]
+	# puzzle_name = 'oct0515'
+	puzzle_solver.fill( puzzle_name )
+	diff = evaluate.compare_results( puzzle_name )
+	evaluate.score_puzzle( diff )
+
+
+if __name__ == '__main__':
+	main()
