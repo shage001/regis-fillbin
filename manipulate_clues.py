@@ -208,7 +208,59 @@ def minimum_edit_distance( s1, s2 ):
 	return distances[-1]
 
 
-# if __name__ == '__main__':
+def partition_data():
+	"""
+	**********************************************************************************************************************
+	partition data by answer length
+	"""
+	f = open( 'assets/clues-best.txt', 'r' )
+	pairs = f.read().splitlines()
+	f.close()
+	length_pairs = [ [], [], [], [], [] ]
+
+	for pair in pairs:
+		answer = pair[ pair.rfind( ',' ) + 3 : pair.find( ')' ) - 1 ]
+		if len( answer ) > 6:
+			length_pairs[4].append( pair )
+		else:
+			length_pairs[len( answer ) - 3].append( pair )
+
+	pairs_3 = length_pairs[0]
+	pairs_4 = length_pairs[1]
+	pairs_5 = length_pairs[2]
+	pairs_6 = length_pairs[3]
+	pairs_long = length_pairs[4]
+
+	three_file = open( 'assets/clues-3.txt', 'w' )
+	four_file = open( 'assets/clues-4.txt', 'w' )
+	five_file = open( 'assets/clues-5.txt', 'w' )
+	six_file = open( 'assets/clues-6.txt', 'w' )
+	long_file = open( 'assets/clues-7+.txt', 'w' )
+
+	for pair in pairs_3:
+		three_file.write( pair + '\n' )
+
+	for pair in pairs_4:
+		four_file.write( pair + '\n' )
+
+	for pair in pairs_5:
+		five_file.write( pair + '\n' )
+
+	for pair in pairs_6:
+		six_file.write( pair + '\n' )
+
+	for pair in pairs_long:
+		long_file.write( pair + '\n' )
+
+	three_file.close()
+	four_file.close()
+	five_file.close()
+	six_file.close()
+	long_file.close()
+
+
+
+if __name__ == '__main__':
 	# to_lower()
 	# re_sort()
 	# match_quotes()
@@ -217,3 +269,4 @@ def minimum_edit_distance( s1, s2 ):
 	# shorten_list_2()
 	# parse_wiki_titles()
 	# generate_dictionary()
+	partition_data()
