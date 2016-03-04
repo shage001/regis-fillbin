@@ -12,6 +12,7 @@ PAGE = 'http://crosswordtracker.com/'
 PREFIX = 'browse/answers-starting-with-'
 SUFFIX = '/?page='
 ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+OUT_FILE = 'assets/clues-NEW.txt'
 
 
 def main():
@@ -36,6 +37,8 @@ def scrape_single_letter( letter ):
 	"""
 	**********************************************************************************************************************
 	Scrapes data for a single letter
+
+	@param: {string} letter The letter we're scraping
 	"""
 	## first determine how many pages there are ##
 	source = get_source( PAGE + PREFIX + letter )
@@ -68,8 +71,9 @@ def scrape_single_letter( letter ):
 
 			list_index = words.find( '<a class="answer"', list_item_end ) # start of next entry
 
-	print ( all_words )
-	return all_words
+	## get the clues for each answer ##
+	for answer, href in all_words:
+		get_clues_for_answer( answer, href )
 
 
 def get_source( page ):
@@ -78,6 +82,7 @@ def get_source( page ):
 	Returns the source code of a page
 
 	@param: {string} page The page URL
+	@return: {string} The page source
 	"""
 	try:
 		## request the resource using boilerplate found on Stack Overflow once upon a time ##
@@ -98,7 +103,13 @@ def get_clues_for_answer( answer, href ):
 	**********************************************************************************************************************
 	Given an answer and the href that links to its page, return all corresponding
 	clues
+
+	@param: {string} answer One answer
+	@param: {string} href The path to the answer's page
+	@return: {string[]} A list of clues for this answer
 	"""
+	clues = []
+	
 
 
 if __name__ == '__main__':
