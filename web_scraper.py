@@ -8,9 +8,9 @@ Scrapes internet for possible clue base
 import urllib2
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-US) AppleWebKit/534.3 (KHTML, like Gecko) Chrome/6.0.472.63 Safari/534.3'
-PREFIX = 'http://crosswordtracker.com/browse/answers-starting-with-'
+PAGE = 'http://crosswordtracker.com/'
+PREFIX = 'browse/answers-starting-with-'
 SUFFIX = '/?page='
-ANSWER_PAGE = 'http://crosswordtracker.com/answer/'
 ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
 
 
@@ -38,15 +38,38 @@ def scrape_single_letter( letter ):
 	Scrapes data for a single letter
 	"""
 	## first determine how many pages there are ##
-	source = get_source( PREFIX + letter )
+	source = get_source( PAGE + PREFIX + letter )
 	last_div_index = source.rfind( 'paginator' )
 	last_div_index = source.rfind( 'paginator', 0, last_div_index - 1 )
-	num_pages = source[ last_div_index + 11 : last_div_index + 13 ]
+	num_pages = int( source[ last_div_index + 11 : last_div_index + 13 ] )
+	all_words = []
 
 	## iterate over all pages ##
 	for i in range ( 1, num_pages + 1 ):
-		page = PREFIX + letter + SUFFIX + i
+
+		page = PAGE + PREFIX + str( letter ) + SUFFIX + str( i )
 		source = get_source( page )
+
+		## bound the source to the word boxes ##
+		words_start = source.find( 'browse_box' )
+		words_end = source.find( '</ul>', words_start )
+		words = source[ words_start : words_end ]
+
+		## extract each answer ##
+		list_index = words.find( '<a class="answer"' )
+		while list_index != -1:
+
+			list_item_end = words.find( '</a>', list_index ) # end of entry
+
+			entry = words[ list_index : list_item_end ]
+			href = entry[ entry.find( 'href=' ) + 7 : entry.rfind( '">' ) ]
+			answer = entry[ entry.rfind( '">' ) + 2 : ]
+			all_words.append( ( answer, href ) )
+
+			list_index = words.find( '<a class="answer"', list_item_end ) # start of next entry
+
+	print ( all_words )
+	return all_words
 
 
 def get_source( page ):
@@ -65,6 +88,7 @@ def get_source( page ):
 
 	except:
 		print( 'Resource error' )
+		return
 
 	return page_source
 
