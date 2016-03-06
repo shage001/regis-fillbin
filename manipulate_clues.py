@@ -15,7 +15,7 @@ TO_IGNORE = [ 'the', 'a', 'an', 'of', 'with', 'and', 'in' ]
 def to_lower():
 	"""
 	**********************************************************************************************************************
-	turn all data to lower case
+	turn all clues to lower case
 	"""
 	clue_file = open( 'assets/clues-good.txt', 'r' )
 	new_clue_file = open( 'assets/clues-better.txt', 'w' )
@@ -85,7 +85,9 @@ def make_key_word_list():
 
 	new_clue_file = open( 'assets/clues-key-words.txt', 'w' )
 	for pair in pairs:
-		key_words = [ word.strip( string.punctuation + ' ' ) for word in ast.literal_eval( pair )[0].split() if word.strip( string.punctuation + ' ' ) not in TO_IGNORE ]
+		key_words = [ word.strip( string.punctuation + ' ' ) \
+			for word in ast.literal_eval( pair )[0].split() \
+			if word.strip( string.punctuation + ' ' ) not in TO_IGNORE ]
 		key_string = ' '.join( key_words )
 		new_tuple = ( key_string.strip(), ast.literal_eval( pair )[1] )
 		new_clue_file.write( str( new_tuple ) + '\n' )
@@ -114,6 +116,8 @@ def shorten_list_2():
 	"""
 	**********************************************************************************************************************
 	remove clues based on min edit distance
+
+	this DOES NOT WORK
 	"""
 	clue_file = open( 'assets/clues-best.txt', 'r' )
 	pairs = clue_file.read().splitlines()

@@ -11,8 +11,10 @@ USER_AGENT = 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-US) AppleWebK
 PAGE = 'http://crosswordtracker.com/'
 PREFIX = 'browse/answers-starting-with-'
 SUFFIX = '/?page='
-ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
-OUT_FILE = 'assets/clues-NEW.txt'
+## CHANGE BACK!!!!! ##
+ALPHABET = 'wxyz'
+NUMBERS = '0123456789'
+OUT_FILE = 'assets/clues-NEW3.txt'
 
 
 def main():
@@ -20,8 +22,8 @@ def main():
 	**********************************************************************************************************************
 	Main function to run on program execution
 	"""
-	# scrape_all_data()
-	scrape_single_letter( 'a' )
+	scrape_all_data()
+	# scrape_single_letter( 'b' )
 
 
 def scrape_all_data():
@@ -30,6 +32,7 @@ def scrape_all_data():
 	Goes through all 26 letters to scrape the data
 	"""
 	for letter in ALPHABET:
+		print( letter )
 		scrape_single_letter( letter )
 
 
@@ -44,7 +47,12 @@ def scrape_single_letter( letter ):
 	source = get_source( PAGE + PREFIX + letter )
 	last_div_index = source.rfind( 'paginator' )
 	last_div_index = source.rfind( 'paginator', 0, last_div_index - 1 )
-	num_pages = int( source[ last_div_index + 11 : last_div_index + 13 ] )
+
+	if source[ last_div_index + 12 : last_div_index + 13 ] in NUMBERS: # single v double digit pages
+		num_pages = int( source[ last_div_index + 11 : last_div_index + 13 ] )
+	else:
+		num_pages = int( source[ last_div_index + 11 : last_div_index + 12 ] )
+
 	all_words = []
 
 	## iterate over all pages ##
@@ -72,8 +80,14 @@ def scrape_single_letter( letter ):
 			list_index = words.find( '<a class="answer"', list_item_end ) # start of next entry
 
 	## get the clues for each answer ##
+	out_file = open( OUT_FILE, 'a' )
+
 	for answer, href in all_words:
-		get_clues_for_answer( answer, href )
+		clues = get_clues_for_answer( answer, href )
+		for clue in clues:
+			out_file.write( '(' + clue + ', ' + answer + ')\n' )
+
+	out_file.close()
 
 
 def get_source( page ):
@@ -108,8 +122,28 @@ def get_clues_for_answer( answer, href ):
 	@param: {string} href The path to the answer's page
 	@return: {string[]} A list of clues for this answer
 	"""
-	clues = []
-	
+	all_clues = []
+	source = get_source( PAGE + href )
+	if not source: # skip broken links that came up in some tests
+		print( 'Broken link for ' + str( ( answer, href ) ) )
+		return all_clues
+
+	clues_start = source.find( 'sortable clue-list' )
+	clues_end = source.find( '</div>', clues_start )
+	clues = source[ clues_start : clues_end ]
+
+	list_index = clues.find( 'data-count="' )
+	while list_index != -1:
+
+		list_item_end = clues.find( '</a>', list_index )
+
+		clue = clues[ clues.find( '">', list_index + 18 ) + 2 : list_item_end ]
+		all_clues.append( clue )
+		# print( clue, answer )
+
+		list_index = clues.find( 'data-count="', list_item_end )
+
+	return all_clues
 
 
 if __name__ == '__main__':
