@@ -274,11 +274,11 @@ def parse_symbols():
 
 	length = len( pairs )
 	for i in range( length ):
-		# pairs[i] = pairs[i].replace( '&quot;', '"' )
-		# pairs[i] = pairs[i].replace( '&#39;', '\'' )
-		# pairs[i] = pairs[i].replace( '&amp;', '&' )
-		# pairs[i] = pairs[i].replace( '&lt;', '<' )
-		# pairs[i] = pairs[i].replace( '&gt;', '>' )
+		pairs[i] = pairs[i].replace( '&quot;', '"' )
+		pairs[i] = pairs[i].replace( '&#39;', '\'' )
+		pairs[i] = pairs[i].replace( '&amp;', '&' )
+		pairs[i] = pairs[i].replace( '&lt;', '<' )
+		pairs[i] = pairs[i].replace( '&gt;', '>' )
 
 	f = open( 'assets/clues-NEWEST.txt', 'w' )
 	for pair in pairs:
@@ -286,5 +286,54 @@ def parse_symbols():
 	f.close()
 
 
+def remove_shorts():
+	"""
+	**********************************************************************************************************************
+	remove answers that are too short for NYT puzzle (under 3)
+	"""
+	return
+
+
+def stringify():
+	"""
+	**********************************************************************************************************************
+	make string lines into string tuples so literal_eval will work on them
+	"""
+	f = open( 'assets/clues-NEWEST.txt', 'r' )
+	pairs = f.read().splitlines()
+	f.close()
+
+	length = len( pairs )
+	for i in range( length ):
+		clue_end = pairs[i].rfind( ',' )
+		pairs[i] = pairs[i][0] + '\'' + \
+				   pairs[i][ 1 : clue_end ].lower() + '\', \'' + \
+				   pairs[i][ clue_end + 2 : -1 ] + '\''
+
+	f = open( 'assets/clues-NEWEST.txt', 'w' )
+	for pair in pairs:
+		f.write( pair + '\n' )
+	f.close()
+
+
+def close_parens():
+	"""
+	**********************************************************************************************************************
+	one-time paren matching fix
+	"""
+	f = open( 'assets/clues-NEWEST.txt', 'r' )
+	pairs = f.read().splitlines()
+	f.close()
+
+	length = len( pairs )
+	for i in range( length ):
+		pairs[i] += ')'
+
+	f = open( 'assets/clues-NEWEST.txt', 'w' )
+	for pair in pairs:
+		f.write( pair + '\n' )
+	f.close()
+
 if __name__ == '__main__':
-	parse_symbols()
+	# parse_symbols()
+	close_parens()
