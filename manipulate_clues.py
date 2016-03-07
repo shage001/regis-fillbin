@@ -274,7 +274,11 @@ def parse_symbols():
 
 	length = len( pairs )
 	for i in range( length ):
-		pairs[i] = pairs[i].replace( '&quot;', '"' )
+		# pairs[i] = pairs[i].replace( '&quot;', '"' )
+		# pairs[i] = pairs[i].replace( '&#39;', '\'' )
+		# pairs[i] = pairs[i].replace( '&amp;', '&' )
+		# pairs[i] = pairs[i].replace( '&lt;', '<' )
+		# pairs[i] = pairs[i].replace( '&gt;', '>' )
 
 	f = open( 'assets/clues-NEWEST.txt', 'w' )
 	for pair in pairs:
