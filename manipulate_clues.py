@@ -263,14 +263,24 @@ def partition_data():
 	long_file.close()
 
 
+def parse_symbols():
+	"""
+	**********************************************************************************************************************
+	replace html character codes with actual characters
+	"""
+	f = open( 'assets/clues-NEWEST.txt', 'r' )
+	pairs = f.read().splitlines()
+	f.close()
+
+	length = len( pairs )
+	for i in range( length ):
+		pairs[i] = pairs[i].replace( '&quot;', '"' )
+
+	f = open( 'assets/clues-NEWEST.txt', 'w' )
+	for pair in pairs:
+		f.write( pair + '\n' )
+	f.close()
+
 
 if __name__ == '__main__':
-	# to_lower()
-	# re_sort()
-	# match_quotes()
-	# make_key_word_list()
-	# shorten_list()
-	# shorten_list_2()
-	# parse_wiki_titles()
-	# generate_dictionary()
-	partition_data()
+	parse_symbols()
