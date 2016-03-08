@@ -349,8 +349,78 @@ def close_parens():
 		f.write( pair + '\n' )
 	f.close()
 
+
+def standardize_blanks():
+	"""
+	**********************************************************************************************************************
+	make all word blanks three underscores (by running repeatedly)
+	"""
+	f = open( 'assets/clues-NEWEST.txt', 'r' )
+	pairs = f.read().splitlines()
+	f.close()
+
+	length = len( pairs )
+	for i in range( length ):
+		pairs[i] = pairs[i].replace( '____', '___' )
+
+	f = open( 'assets/clues-NEWEST.txt', 'w' )
+	for pair in pairs:
+		f.write( pair + '\n' )
+	f.close()
+
+
+def remove_non_letters():
+	"""
+	**********************************************************************************************************************
+	throw out answers that have non-letter characters
+	"""
+	f = open( 'assets/clues-NEWEST.txt', 'r' )
+	pairs = f.read().splitlines()
+	f.close()
+
+	new_pairs = []
+
+	for pair in pairs:
+		include = ast.literal_eval( pair )[1].isalpha()
+		if include:
+			new_pairs.append( pair )
+
+
+	f = open( 'assets/clues-NEWEST.txt', 'w' )
+	for pair in new_pairs:
+		f.write( pair + '\n' )
+	f.close()
+
+
+def re_sort2():
+	"""
+	**********************************************************************************************************************
+	sort the data in a not stupid way
+	"""
+	f = open( 'assets/clues-NEWEST.txt', 'r' )
+	pairs = f.read().splitlines()
+	f.close()
+
+	new_pairs = sorted( pairs, cmp=compare )
+
+	f = open( 'assets/clues-NEWEST.txt', 'w' )
+	for pair in new_pairs:
+		f.write( pair + '\n' )
+	f.close()
+
+
+def compare( a, b ):
+	"""
+	**********************************************************************************************************************
+	custom compare function to sort clue, answer tuples
+	"""
+	if ast.literal_eval( a )[0] < ast.literal_eval( b )[0]:
+		return -1
+	elif ast.literal_eval( a )[0] == ast.literal_eval( b )[0]:
+		return 0
+	else:
+		return 1
+
+
 if __name__ == '__main__':
-	# parse_symbols()
-	# stringify()
-	# close_parens()
-	remove_shorts()
+	re_sort2()
