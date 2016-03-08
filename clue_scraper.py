@@ -16,7 +16,7 @@ import random
 import puzzle_structure
 import manipulate_clues
 
-LONG_FILE_PATH = 'assets/clues-best.txt'
+LONG_FILE_PATH = 'assets/clues-NEWEST.txt'
 SHORT_FILE_PATH = 'assets/clues-short.txt'
 WORDS_FILE = 'assets/words-answers.txt'
 WIKI_FILE = 'assets/wiki-titles-2.txt'

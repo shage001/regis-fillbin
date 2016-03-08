@@ -23,8 +23,8 @@ def fill( puzzle_name ):
 	clue_scraper.lookup_all_clues( puzzle_name )
 
 	## ask for input to keep solving ##
-	print( 'Answers computed. Proceed with solving? ' )
-	cont = sys.stdin.readline()
+	# print( 'Answers computed. Proceed with solving? ' )
+	# cont = sys.stdin.readline()
 
 	## keep track of the puzzle at the previous iteration to control ##
 	## how long to solve at each step ##
