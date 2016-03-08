@@ -291,7 +291,22 @@ def remove_shorts():
 	**********************************************************************************************************************
 	remove answers that are too short for NYT puzzle (under 3)
 	"""
-	return
+	f = open( 'assets/clues-NEWEST.txt', 'r' )
+	pairs = f.read().splitlines()
+	f.close()
+
+	new_pairs = []
+	for pair in pairs:
+		print( pair )
+		answer = ast.literal_eval( pair )[1]
+		if len( answer ) > 2:
+			new_pairs.append( pair )
+
+
+	f = open( 'assets/clues-NEWEST.txt', 'w' )
+	for pair in new_pairs:
+		f.write( pair + '\n' )
+	f.close()
 
 
 def stringify():
@@ -307,8 +322,8 @@ def stringify():
 	for i in range( length ):
 		clue_end = pairs[i].rfind( ',' )
 		pairs[i] = pairs[i][0] + '\'' + \
-				   pairs[i][ 1 : clue_end ].lower() + '\', \'' + \
-				   pairs[i][ clue_end + 2 : -1 ] + '\''
+				   pairs[i][ 1 : clue_end ].lower().replace( '\'', '\\\'' ) + '\', \'' + \
+				   pairs[i][ clue_end + 2 : -1 ] + '\')'
 
 	f = open( 'assets/clues-NEWEST.txt', 'w' )
 	for pair in pairs:
@@ -327,7 +342,7 @@ def close_parens():
 
 	length = len( pairs )
 	for i in range( length ):
-		pairs[i] += ')'
+		pairs[i] = pairs[i][ : -1 ]
 
 	f = open( 'assets/clues-NEWEST.txt', 'w' )
 	for pair in pairs:
@@ -336,4 +351,6 @@ def close_parens():
 
 if __name__ == '__main__':
 	# parse_symbols()
-	close_parens()
+	# stringify()
+	# close_parens()
+	remove_shorts()
