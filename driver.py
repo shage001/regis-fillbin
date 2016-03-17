@@ -1,13 +1,15 @@
 '''
 Sam Hage
 Thesis
-Driver fro the puzzle solver.
+Driver for the puzzle solver.
 12/2015
 
 TODO:
-- improve performance with uncompressed data
-- improve performance with custom scraped data
-- partition data based on answer length
+- improve performance with uncompressed data X
+- improve performance with custom scraped data X
+- partition data based on answer length X
+- partition wiki data
+- improve binary search to check surrounding answers
 
 LIMITATIONS:
 - wordplay/humor

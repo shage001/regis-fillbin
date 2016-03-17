@@ -422,5 +422,57 @@ def compare( a, b ):
 		return 1
 
 
+def partition_wiki_titles():
+	"""
+	**********************************************************************************************************************
+	lower case the titles and remove underscores
+	"""
+	f = open( 'assets/wiki-titles-2.txt', 'r' )
+	titles = f.read().splitlines()
+	f.close()
+	length_titles = [ [], [], [], [], [] ]
+
+	for title in titles:
+		if len( title ) > 15:
+			pass
+		elif len( title ) > 6:
+			length_titles[4].append( title )
+		else:
+			length_titles[len( title ) - 3].append( title )
+
+	titles_3 = length_titles[0]
+	titles_4 = length_titles[1]
+	titles_5 = length_titles[2]
+	titles_6 = length_titles[3]
+	titles_long = length_titles[4]
+
+	three_file = open( 'assets/wiki-3.txt', 'w' )
+	four_file = open( 'assets/wiki-4.txt', 'w' )
+	five_file = open( 'assets/wiki-5.txt', 'w' )
+	six_file = open( 'assets/wiki-6.txt', 'w' )
+	long_file = open( 'assets/wiki-7+.txt', 'w' )
+
+	for title in titles_3:
+		three_file.write( title + '\n' )
+
+	for title in titles_4:
+		four_file.write( title + '\n' )
+
+	for title in titles_5:
+		five_file.write( title + '\n' )
+
+	for title in titles_6:
+		six_file.write( title + '\n' )
+
+	for title in titles_long:
+		long_file.write( title + '\n' )
+
+	three_file.close()
+	four_file.close()
+	five_file.close()
+	six_file.close()
+	long_file.close()
+
+
 if __name__ == '__main__':
-	partition_data()
+	partition_wiki_titles()
