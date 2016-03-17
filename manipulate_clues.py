@@ -217,7 +217,7 @@ def partition_data():
 	**********************************************************************************************************************
 	partition data by answer length
 	"""
-	f = open( 'assets/clues-best.txt', 'r' )
+	f = open( 'assets/clues-NEWEST.txt', 'r' )
 	pairs = f.read().splitlines()
 	f.close()
 	length_pairs = [ [], [], [], [], [] ]
@@ -423,4 +423,4 @@ def compare( a, b ):
 
 
 if __name__ == '__main__':
-	re_sort2()
+	partition_data()
