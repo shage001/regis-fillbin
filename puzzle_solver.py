@@ -155,7 +155,6 @@ def update_candidates( answers, puzzle ):
 		updated_candidates = []
 		for candidate in answers[i][4]:
 			include = True
-			print( candidate, pattern )
 			for k in range( len( candidate ) ):
 				if candidate[k] != pattern[k] and pattern[k] != ' ':
 					include = False

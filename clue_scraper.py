@@ -22,12 +22,10 @@ FILE_PATH_4 = 'assets/clues-4.txt'
 FILE_PATH_5 = 'assets/clues-5.txt'
 FILE_PATH_6 = 'assets/clues-6.txt'
 FILE_PATH_7 = 'assets/clues-7+.txt'
-# SHORT_FILE_PATH = 'assets/clues-short.txt'
 WORDS_FILE = 'assets/words-answers.txt'
 WIKI_FILE = 'assets/wiki-titles-2.txt'
-# SHORTENING_FACTOR = 1
 TO_IGNORE = [ 'the', 'a', 'an', 'of', 'with', 'and', 'in' ]
-MIN_DISTANCE = 5
+MIN_DISTANCE = 10
 
 def main():
 	"""
@@ -63,7 +61,7 @@ def lookup_all_clues( puzzle_name ):
 
 	@param: {string} puzzle_name
 	"""
-	## load long list of clues into memory ##
+	## load all clue lists into memory ##
 	print( 'Loading clues...' )
 	long_pairs = load_clues( LONG_FILE_PATH )
 	pairs_3 = load_clues( FILE_PATH_3 )
@@ -72,9 +70,6 @@ def lookup_all_clues( puzzle_name ):
 	pairs_6 = load_clues( FILE_PATH_6 )
 	pairs_7 = load_clues( FILE_PATH_7 )
 	print( 'Done.' )
-	## randomly shorten the list and load those as well ##
-	# shorten_clues( SHORTENING_FACTOR )
-	# short_pairs = load_clues( SHORT_FILE_PATH )
 
 	## read current answers from answers.txt ##
 	puzzle_name = strip_puzzle_name( puzzle_name )
