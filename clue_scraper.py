@@ -17,11 +17,17 @@ import puzzle_structure
 import manipulate_clues
 
 LONG_FILE_PATH = 'assets/clues-NEWEST.txt'
-SHORT_FILE_PATH = 'assets/clues-short.txt'
+FILE_PATH_3 = 'assets/clues-3.txt'
+FILE_PATH_4 = 'assets/clues-4.txt'
+FILE_PATH_5 = 'assets/clues-5.txt'
+FILE_PATH_6 = 'assets/clues-6.txt'
+FILE_PATH_7 = 'assets/clues-7+.txt'
+# SHORT_FILE_PATH = 'assets/clues-short.txt'
 WORDS_FILE = 'assets/words-answers.txt'
 WIKI_FILE = 'assets/wiki-titles-2.txt'
-SHORTENING_FACTOR = 1
+# SHORTENING_FACTOR = 1
 TO_IGNORE = [ 'the', 'a', 'an', 'of', 'with', 'and', 'in' ]
+MIN_DISTANCE = 5
 
 def main():
 	"""
@@ -60,10 +66,15 @@ def lookup_all_clues( puzzle_name ):
 	## load long list of clues into memory ##
 	print( 'Loading clues...' )
 	long_pairs = load_clues( LONG_FILE_PATH )
+	pairs_3 = load_clues( FILE_PATH_3 )
+	pairs_4 = load_clues( FILE_PATH_4 )
+	pairs_5 = load_clues( FILE_PATH_5 )
+	pairs_6 = load_clues( FILE_PATH_6 )
+	pairs_7 = load_clues( FILE_PATH_7 )
 	print( 'Done.' )
 	## randomly shorten the list and load those as well ##
-	shorten_clues( SHORTENING_FACTOR )
-	short_pairs = load_clues( SHORT_FILE_PATH )
+	# shorten_clues( SHORTENING_FACTOR )
+	# short_pairs = load_clues( SHORT_FILE_PATH )
 
 	## read current answers from answers.txt ##
 	puzzle_name = strip_puzzle_name( puzzle_name )
@@ -89,6 +100,19 @@ def lookup_all_clues( puzzle_name ):
 		info = line.split( '\t' )
 		clue = ast.literal_eval( info[3] )[0]
 		pattern = ast.literal_eval( info[3] )[1]
+
+		## figure out which list of shorter clues to use ##
+		if len( pattern ) == 3:
+			short_pairs = pairs_3
+		elif len( pattern ) == 4:
+			short_pairs = pairs_4
+		elif len( pattern ) == 5:
+			short_pairs = pairs_5
+		elif len( pattern ) == 6:
+			short_pairs = pairs_6
+		else:
+			short_pairs = pairs_7
+
 		answers = lookup_single_clue( clue, pattern, long_pairs, short_pairs )
 		out_file.write( info[0] + '\t' + info[1] + '\t' + info[2] + '\t' + str( info[3] ) + '\t' + str( answers ) + '\n' )
 
@@ -110,7 +134,7 @@ def lookup_single_clue( clue, pattern, long_pairs, short_pairs ):
 	@param: {string} clue
 	@param: {string} pattern The answer pattern so far
 	@param: {string[]} long_pairs The clue/answer data
-	@param: {string[]} short_pairs The clue/answer data randomly compressed
+	@param: {string[]} short_pairs The clue/answer data partitioned by length
 	@return: {string[]} A list of possible answers
 	"""
 	## try binary search, otherwise use fuzzy ##
@@ -148,7 +172,7 @@ def binary_search( clue, pattern, pairs ):
 			if len( cur_pair[1] ) == len( pattern ):
 				answers = [ cur_pair[1] ]
 			break
-	if manipulate_clues.minimum_edit_distance( cur_clue, clue ) < 5 and len( cur_pair[1] ) == len( pattern ):
+	if manipulate_clues.minimum_edit_distance( cur_clue, clue ) < MIN_DISTANCE and len( cur_pair[1] ) == len( pattern ):
 		answers = [ cur_pair[1] ]
 	return answers
 
