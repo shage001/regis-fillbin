@@ -8,8 +8,9 @@ TODO:
 - improve performance with uncompressed data X
 - improve performance with custom scraped data X
 - partition data based on answer length X
-- partition wiki data
+- partition wiki data X
 - improve binary search to check surrounding answers
+- add wikipedia search
 
 LIMITATIONS:
 - wordplay/humor

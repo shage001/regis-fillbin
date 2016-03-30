@@ -22,8 +22,8 @@ FILE_PATH_4 = 'assets/clues-4.txt'
 FILE_PATH_5 = 'assets/clues-5.txt'
 FILE_PATH_6 = 'assets/clues-6.txt'
 FILE_PATH_7 = 'assets/clues-7+.txt'
-WORDS_FILE = 'assets/words-answers.txt'
-WIKI_FILE = 'assets/wiki-titles-2.txt'
+# WORDS_FILE = 'assets/words-answers.txt'
+# WIKI_FILE = 'assets/wiki-titles-2.txt'
 TO_IGNORE = [ 'the', 'a', 'an', 'of', 'with', 'and', 'in' ]
 MIN_DISTANCE = 10
 
@@ -210,7 +210,7 @@ def fuzzy_search( clue, pattern, pairs ):
 	return answers
 
 
-def single_word_match( pattern ):
+def single_word_match( pattern, words ):
 	"""
 	**********************************************************************************************************************
 	Match a single word by letter pattern from a word list
@@ -218,8 +218,8 @@ def single_word_match( pattern ):
 	@param: {string} pattern Pattern of letters and question marks
 	@return: {string[]} A list of possible word matches
 	"""
-	f = open( WORDS_FILE, 'r' )
-	words = f.read().splitlines()
+	# f = open( WORDS_FILE, 'r' )
+	# words = f.read().splitlines()
 	# num_blanks = pattern.count( '?' )
 	to_search = pattern.lower()
 	to_search = re.compile( to_search.replace( '?', '.' ) )
@@ -228,7 +228,7 @@ def single_word_match( pattern ):
 	return possible_matches
 
 
-def wiki_title_match( pattern ):
+def wiki_title_match( pattern, titles ):
 	"""
 	**********************************************************************************************************************
 	Match a single clue by letter pattern from a list of wikipedia titles
@@ -236,8 +236,8 @@ def wiki_title_match( pattern ):
 	@param: {string} pattern Pattern of letters and question marks
 	@return: {string[]} A list of possible word matches
 	"""
-	f = open( WIKI_FILE, 'r' )
-	titles = f.read().splitlines()
+	# f = open( WIKI_FILE, 'r' )
+	# titles = f.read().splitlines()
 	# num_blanks = pattern.count( '?' )
 	to_search = pattern.lower()
 	to_search = re.compile( to_search.replace( '?', '.' ) )

@@ -6,6 +6,12 @@ import clue_scraper
 import puzzle_structure
 
 TIME_DELAY = .1
+WORDS_FILE = 'assets/words-answers.txt'
+WIKI_PATH_3 = 'assets/wiki-3.txt'
+WIKI_PATH_4 = 'assets/wiki-4.txt'
+WIKI_PATH_5 = 'assets/wiki-5.txt'
+WIKI_PATH_6 = 'assets/wiki-6.txt'
+WIKI_PATH_7 = 'assets/wiki-7+.txt'
 
 def fill( puzzle_name ):
 	"""
@@ -178,20 +184,31 @@ def search_dictionaries( answers ):
 	@param: {string[][]} answers The list of information about each clue
 	@return: {string[][]} Updated answers
 	"""
+	words = clue_scraper.load_clues( WORDS_FILE )
+	wiki_3 = clue_scraper.load_clues( WIKI_PATH_3 )
+	wiki_4 = clue_scraper.load_clues( WIKI_PATH_4 )
+	wiki_5 = clue_scraper.load_clues( WIKI_PATH_5 )
+	wiki_6 = clue_scraper.load_clues( WIKI_PATH_6 )
+	# wiki_7 = clue_scraper.load_clues( WIKI_PATH_7 )
+	wiki_titles = [ wiki_3, wiki_4, wiki_5, wiki_6 ]
+
 	message = 'Searching dictionaries'
 	j = 0
 	for i in range( len( answers ) ):
-		# print( answer )
 		sys.stdout.write( '\r                                ' )
 		sys.stdout.write( '\r' + message + ( j % 4 )*'.' + ( 5 - j % 4 )*' ' )
 		sys.stdout.flush()
 		j += 1
 		pattern = answers[i][3][1]
 		if len( answers[i][4] ) == 0:
-			answers[i][4] = clue_scraper.single_word_match( pattern )
+			answers[i][4] = clue_scraper.single_word_match( pattern, words )
 			# print( answers[i][4] )
-			# if len( answers[i][4] ) == 0 and len( pattern ) > 8:
-			# 	answers[i][4] = clue_scraper.wiki_title_match( pattern )
+			if len( answers[i][4] ) == 0 and len( pattern ) < 7:
+				# length = len( pattern )
+				# if length > 7:
+				# 	length = 7
+				answers[i][4] = clue_scraper.wiki_title_match( pattern, wiki_titles[ len( pattern ) - 3 ] )
+
 	print( 'Done.' )
 	answers = sorted( answers, cmp=puzzle_structure.compare_answers )
 	num_answers = len( answers )
