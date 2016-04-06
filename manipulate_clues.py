@@ -154,13 +154,16 @@ def parse_wiki_titles():
 	"""
 	**********************************************************************************************************************
 	lower case the titles and remove underscores
+	(edit: and other non-alphas)
 	"""
-	f = open( 'assets/wiki-titles.txt', 'r' )
+	f = open( 'assets/wiki-titles-2.txt', 'r' )
 	titles = f.read().splitlines()
 	f.close()
-	new_titles_file = open( 'assets/wiki-titles-2.txt', 'w' )
+	regex = re.compile( '[^a-zA-Z]' )
+	new_titles_file = open( 'assets/wiki-titles-3.txt', 'w' )
 	for title in titles:
-		new_titles_file.write( title.replace( '_', '' ) + '\n' )
+		new_title = regex.sub( '', title )
+		new_titles_file.write( new_title.upper() + '\n' )
 
 	new_titles_file.close()
 
@@ -427,13 +430,13 @@ def partition_wiki_titles():
 	**********************************************************************************************************************
 	lower case the titles and remove underscores
 	"""
-	f = open( 'assets/wiki-titles-2.txt', 'r' )
+	f = open( 'assets/wiki-titles-3.txt', 'r' )
 	titles = f.read().splitlines()
 	f.close()
 	length_titles = [ [], [], [], [], [] ]
 
 	for title in titles:
-		if len( title ) > 15:
+		if len( title ) < 3 or len( title ) > 15:
 			pass
 		elif len( title ) > 6:
 			length_titles[4].append( title )
@@ -475,4 +478,5 @@ def partition_wiki_titles():
 
 
 if __name__ == '__main__':
+	# parse_wiki_titles()
 	partition_wiki_titles()

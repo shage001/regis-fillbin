@@ -30,8 +30,8 @@ def main():
 	**********************************************************************************************************************
 	Run on file execution
 	"""
-	puzzle_name = WEEK[0]
-	# puzzle_name = 'oct0515'
+	# puzzle_name = WEEK[3]
+	puzzle_name = 'oct0515'
 	puzzle_solver.fill( puzzle_name )
 	diff = evaluate.compare_results( puzzle_name )
 	evaluate.score_puzzle( diff )
