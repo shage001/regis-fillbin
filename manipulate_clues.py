@@ -1,8 +1,8 @@
 '''
 Sam Hage
 Thesis
-A bunch of functions to manipulate the crossword data. Most were used once
-to preprocess the data. DON'T CALL THESE
+A bunch of hacky functions to manipulate the crossword data. Most were used once
+to preprocess the data. DON'T RUN THESE.
 12/2015
 '''
 
@@ -479,4 +479,4 @@ def partition_wiki_titles():
 
 if __name__ == '__main__':
 	# parse_wiki_titles()
-	partition_wiki_titles()
+	# partition_wiki_titles()

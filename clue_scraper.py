@@ -5,9 +5,6 @@ Used to get potential answers for clues
 12/2015
 '''
 
-# NOTE to future Sam: big win possible from using crosswordtracker scraped
-# data instead of current
-
 import string
 import sys
 import ast
