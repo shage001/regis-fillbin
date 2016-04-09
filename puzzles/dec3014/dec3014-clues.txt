@@ -1,5 +1,5 @@
-##TUESDAY dec3014##
-#ACROSS
+## TUESDAY dec3014 ##
+# ACROSS
 0	0	4	feature of a royal event
 0	6	3	what bulldogs' jowls do
 0	10	6	food for fido, perhaps
@@ -39,7 +39,7 @@
 14	0	6	dry cleaning targets
 14	7	3	punch-in-the-stomach sound
 14	12	4	bird in a hans christian andersen tale
-#DOWN
+# DOWN
 0	0	4	setting for seurat's "la grande jatte"
 0	1	4	toon beagle
 0	2	4	victims of the farmer's wife

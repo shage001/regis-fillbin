@@ -150,8 +150,8 @@ def write_puzzle( puzzle_name, puzzle ):
 	height = len( puzzle )
 	width = len( puzzle[0] )
 
-	for i in range( width ):
-		for j in range( height ):
+	for i in range( height ):
+		for j in range( width ):
 			out_file.write( puzzle[i][j] + ' ' )
 		out_file.write( '\n' )
 

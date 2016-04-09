@@ -288,4 +288,5 @@ def load_clues( file_path ):
 
 
 if __name__ == '__main__':
-	main()
+	# main()
+	pass

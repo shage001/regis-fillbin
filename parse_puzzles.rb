@@ -48,13 +48,13 @@ header_file = File.open( DEST_PATH + puzzle_date + "/." + weekday + ".txt", "w" 
 acrosses = ac.across
 downs = ac.down
 clue_file = File.open( DEST_PATH + puzzle_date + "/" + puzzle_date + "-clues.txt", "w" )
-clue_file.write( "##" + weekday.upcase + " " + puzzle_date + "##\n" )
-clue_file.write( "#ACROSS\n" )
+clue_file.write( "## " + weekday.upcase + " " + puzzle_date + " ##\n" )
+clue_file.write( "# ACROSS\n" )
 acrosses.each {
 	|across|
 	clue_file.write( across.row.to_s + "\t" + across.column.to_s + "\t" + across.length.to_s + "\t" + across.clue.downcase + "\n" )
 }
-clue_file.write( "#DOWN\n" )
+clue_file.write( "# DOWN\n" )
 downs.each {
 	|down|
 	clue_file.write( down.row.to_s + "\t" + down.column.to_s + "\t" + down.length.to_s + "\t" + down.clue.downcase + "\n" )
