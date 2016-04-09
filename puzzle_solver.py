@@ -1,3 +1,10 @@
+'''
+Sam Hage
+Thesis
+Solves the puzzle
+12/2015
+'''
+
 import ast
 import sys
 import time
