@@ -1,0 +1,79 @@
+## MONDAY apr2913 ##
+# ACROSS
+0	0	5	talkative
+0	6	5	snake that a snake charmer charms
+0	12	3	it follows "//" in a url
+1	0	5	like a limbo champion
+1	6	5	neighborhoods
+1	12	3	"got it!"
+2	0	11	actor charlie's favorite food?
+2	12	3	concert engagement
+3	0	4	golf scorecard numbers
+3	5	4	choose
+3	10	5	jagged, as a leaf's edge
+4	3	12	actress hilary's favorite food?
+5	0	5	lowlife
+5	9	4	going ___ (fighting)
+6	0	10	actress veronica's favorite food?
+6	11	4	dull-colored
+7	0	3	prefix with duct
+7	4	7	access, as a resource
+7	12	3	"i'll take that as ___"
+8	0	4	cushions
+8	5	10	actor brad's favorite food?
+9	2	4	days of long ago
+9	10	5	freeway divisions
+10	0	12	actor dudley's favorite food?
+11	0	5	lies next to
+11	6	4	bern's river
+11	11	4	meowers
+12	0	3	charged particle
+12	4	11	actress goldie's favorite food?
+13	0	3	prefix with natal
+13	4	5	architect jones
+13	10	5	native of the 49th state
+14	0	3	approx. figure
+14	4	5	attach, as a corsage
+14	10	5	attention getters
+# DOWN
+0	0	4	[oh, my stars!]
+0	1	4	turkish title
+0	2	4	funeral stand
+0	3	7	"well, i'll be!"
+0	4	3	japanese money
+0	6	5	home in the woods
+0	7	5	much-advertised vacuum cleaner
+0	8	5	birds' bills
+0	9	3	sprinted
+0	10	6	state as fact
+0	12	10	pioneers' convoy
+0	13	5	___ broom
+0	14	5	hourly workers' pay
+2	5	3	hot tub
+3	11	4	speakeasy owner's fear
+4	4	4	direction in which the sun sets
+4	9	5	goes on a hunger strike, say
+5	0	4	spill (over)
+5	1	4	volcanic emission
+5	2	10	"no, seriously"
+6	5	5	items worn by dracula and superman
+6	6	3	bee: prefix
+6	7	3	frontiersman carson
+6	8	3	treelike creature in "the lord of the rings"
+6	13	4	opening bet
+6	14	4	one who's in charge
+7	10	4	give the eye
+8	3	4	arrange from a to z, say
+8	11	7	scamps
+9	4	6	forward, as a package
+10	0	5	augusta's home
+10	1	5	orchestra winds
+10	6	5	admitted at the door
+10	7	5	tropical fruit
+10	8	5	director welles
+10	9	3	member of the house, for short
+11	12	4	bowls over
+11	13	4	letter-shaped fastener
+11	14	4	grounded trans-atlantic fliers, for short
+12	5	3	singer difranco
+12	10	3	genre for eazy-e and heavy d
