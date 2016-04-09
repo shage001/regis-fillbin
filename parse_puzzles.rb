@@ -38,7 +38,9 @@ weekday = DAYS[ day_indices.index( day_indices.min ) ].downcase
 
 
 ## create the header file ##
-Dir.mkdir( DEST_PATH + puzzle_date )
+if !File.directory?( DEST_PATH + puzzle_date )
+	Dir.mkdir( DEST_PATH + puzzle_date )
+end
 header_file = File.open( DEST_PATH + puzzle_date + "/." + weekday + ".txt", "w" )
 
 
@@ -59,6 +61,38 @@ downs.each {
 }
 
 
+## create skeleton file ##
+skeleton_file = File.open( DEST_PATH + puzzle_date + "/" + puzzle_date + "-skeleton.txt", "w" )
+
+skeleton = ac.diagram
+skeleton.each {
+	|row|
+	row.each {
+		|cell|
+		if cell == "."
+			cell = "0"
+		end
+		if cell == "-"
+			cell = "_"
+		end
+		skeleton_file.write( cell + " " )
+	}
+	skeleton_file.write( "\n" )
+}
 
 
-# puts acrosses[0].row.to_s + "\t" + acrosses[0].column.to_s + "\t" + acrosses[0].length.to_s + "\t" + acrosses[0].clue
+## create skeleton file ##
+solution_file = File.open( DEST_PATH + puzzle_date + "/" + puzzle_date + "-solution.txt", "w" )
+
+solution = ac.solution
+solution.each {
+	|row|
+	row.each {
+		|cell|
+		if cell == "."
+			cell = "0"
+		end
+		solution_file.write( cell + " " )
+	}
+	solution_file.write( "\n" )
+}

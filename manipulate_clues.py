@@ -480,3 +480,4 @@ def partition_wiki_titles():
 if __name__ == '__main__':
 	# parse_wiki_titles()
 	# partition_wiki_titles()
+	pass
