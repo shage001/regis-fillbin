@@ -1,4 +1,4 @@
-## MONDAY feb1810 ##
+## THURSDAY feb1810 ##
 # ACROSS
 0	0	4	start in literature
 0	5	5	alpine feature

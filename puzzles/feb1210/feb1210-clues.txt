@@ -1,4 +1,4 @@
-## MONDAY feb1210 ##
+## FRIDAY feb1210 ##
 # ACROSS
 0	0	15	9 + 3 + 1 + 1/3 + 1/9 + ..., e.g.
 1	0	15	dating service questionnaire heading

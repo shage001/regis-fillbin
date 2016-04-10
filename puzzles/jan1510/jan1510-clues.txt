@@ -1,4 +1,4 @@
-## MONDAY jan1510 ##
+## FRIDAY jan1510 ##
 # ACROSS
 0	0	5	ticketed
 0	6	9	chilled

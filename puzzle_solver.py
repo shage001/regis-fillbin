@@ -219,6 +219,9 @@ def search_dictionaries( answers ):
 	answers = sorted( answers, cmp=puzzle_structure.compare_answers )
 	num_answers = len( answers )
 
+	i = 0
+	print( num_answers )
+	print( answers )
 	for i in range( num_answers ):
 		## find first non-empty answer list ##
 		if len( answers[i][4] ) != 0:

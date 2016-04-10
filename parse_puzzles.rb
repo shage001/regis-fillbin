@@ -9,7 +9,7 @@ DAYS = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Su
 DAYS_SHORT = [ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" ]
 MONTHS = [ "", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" ]
 PUZZLE_PATH = "../assets/dan/"
-DEST_PATH = "puzzles2/"
+DEST_PATH = "puzzles/"
 
 # See String#encode
 encoding_options = {
@@ -19,13 +19,9 @@ encoding_options = {
 	:universal_newline => true       # Always break lines with \n
 }
 
-# i = 0
 Dir.foreach( PUZZLE_PATH ) do
+
 	|file|
-	# i += 1
-	# if i >= 100
-	# 	break
-	# end
 	puzzle_name = File.basename( file, ".puz" )
 	puts puzzle_name
 
@@ -46,6 +42,7 @@ Dir.foreach( PUZZLE_PATH ) do
 	## find day of the week by scanning the puzzle file ##
 	file = File.open( PUZZLE_PATH + puzzle_name + ".puz", "r+" )
 	raw_content = file.read
+	file.close
 	to_start = raw_content.index( "NY Times" )
 
 	if !to_start # check other format
@@ -83,6 +80,7 @@ Dir.foreach( PUZZLE_PATH ) do
 		Dir.mkdir( DEST_PATH + puzzle_date )
 	end
 	header_file = File.open( DEST_PATH + puzzle_date + "/." + weekday + ".txt", "w" )
+	header_file.close
 
 
 	## create the clues file for the puzzle ##
@@ -104,6 +102,8 @@ Dir.foreach( PUZZLE_PATH ) do
 		clue_file.write( down.row.to_s + "\t" + down.column.to_s + "\t" + down.length.to_s + "\t" + cur_clue.downcase + "\n" )
 	}
 
+	clue_file.close
+
 
 	## create skeleton file ##
 	skeleton_file = File.open( DEST_PATH + puzzle_date + "/" + puzzle_date + "-skeleton.txt", "w" )
@@ -124,6 +124,8 @@ Dir.foreach( PUZZLE_PATH ) do
 		skeleton_file.write( "\n" )
 	}
 
+	skeleton_file.close
+
 
 	## create skeleton file ##
 	solution_file = File.open( DEST_PATH + puzzle_date + "/" + puzzle_date + "-solution.txt", "w" )
@@ -140,5 +142,7 @@ Dir.foreach( PUZZLE_PATH ) do
 		}
 		solution_file.write( "\n" )
 	}
+
+	solution_file.close
 
 end

@@ -1,4 +1,4 @@
-## MONDAY mar2310 ##
+## TUESDAY mar2310 ##
 # ACROSS
 0	0	5	vapors
 0	6	5	trades
