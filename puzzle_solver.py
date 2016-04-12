@@ -243,6 +243,7 @@ def refactor_answers( answers ):
 	"""
 	num_answers = len( answers )
 
+	i = 0
 	for i in range( num_answers ):
 		## find first non-empty answer list ##
 		if len( answers[i][4] ) != 0:

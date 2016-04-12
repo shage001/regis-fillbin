@@ -42,7 +42,7 @@ def main():
 	done_file.close()
 
 
-	for puzzle_name in os.listdir( 'puzzles/' ):
+	for puzzle_name in os.listdir( 'puzzles1/' ):
 
 		## avoid hidden files and previously solved ones ##
 		if len( puzzle_name ) != 7 or puzzle_name in done:

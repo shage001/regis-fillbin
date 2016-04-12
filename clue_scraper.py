@@ -184,6 +184,10 @@ def fuzzy_search( clue, pattern, pairs ):
 	## extract key words ##
 	key_words = [ word.strip( string.punctuation ) for word in key_words if word not in TO_IGNORE ]
 
+	## leave clue as is if only composed of words from TO_IGNORE to avoid divide by 0 ##
+	if len( key_words ) == 0:
+		key_words = clue.split()
+
 	# TODO: try using 'all' intead of regex per http://stackoverflow.com/questions/11190835/regular-expressions-in-python-unexpectedly-slow
 	# e.g. 		if all( word in item for word in key_words):
 

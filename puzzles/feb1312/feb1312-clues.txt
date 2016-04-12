@@ -16,7 +16,7 @@
 5	8	4	roman poet who wrote "to be loved, be lovable"
 6	0	4	german carmaker
 6	7	4	port of yemen
-6	12	3	401(k) alternative
+6	12	3	401 (k) alternative
 7	0	15	samuel beckett play with an unseen character
 8	0	3	convent inhabitant
 8	4	4	fruit-filled pastry

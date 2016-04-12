@@ -68,6 +68,7 @@ def score_puzzle( diff_arr ):
 	One point for each correct letter, plus 10 points for each fully correct word.
 
 	@param: {string[][]} diff_arr The puzzle with differences highlighted
+	@return: {float, float} Percent of squares correct, percent of words correct
 	"""
 	## count the wrong letters ##
 	height = len( diff_arr )
@@ -117,3 +118,7 @@ def score_puzzle( diff_arr ):
 	print( str( total_letters - wrong_letters ) + ' squares correct out of ' + str( total_letters ) )
 	print( str( correct_answers ) + ' answers correct out of ' + str( total_answers ) )
 	print( 'score: ' +  str( ( total_letters - wrong_letters ) + 10 * total_answers ) )
+
+	letters_correct = 100 * ( float ( total_letters - wrong_letters ) / total_letters )
+	words_correct = 100 * ( float( correct_answers ) / total_answers )
+	return letters_correct, words_correct
