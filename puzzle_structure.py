@@ -128,7 +128,7 @@ def create_puzzle( puzzle_name, extension ):
 				continue
 			elif char == '_':
 				row_arr.append( ' ' )
-			elif char == '0' or char.isalpha():
+			elif char == '0' or char.isalpha(): # note: this actually causes problems with some puzzles (which I have deleted)
 				row_arr.append( char )
 
 		puzzle_arr.append( row_arr )

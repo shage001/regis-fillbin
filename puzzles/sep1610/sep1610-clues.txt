@@ -78,4 +78,4 @@
 12	5	3	pintful, perhaps
 12	6	3	slate-cutting tool
 12	7	3	ability to pick things up
-12	11	3	401(k) alternative
+12	11	3	401 (k) alternative

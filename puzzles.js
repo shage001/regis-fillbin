@@ -16,8 +16,8 @@ main();
 function main()
 {
 	// var week = [ 'oct0906', 'dec2899', 'jun0497', 'nov0515', 'nov0615', 'apr2796', 'nov0815' ];
-	var week = [ 'dec1613', 'jul2313', 'aug1011', 'dec2712', 'feb1210', 'nov0610', 'aug1714' ];
-	// var perfectWeek = [ 'apr0813', 'dec1614', 'apr0214', 'apr0110', 'apr3010', 'apr0911', 'aug3010' ];
+	var week = [ 'dec1613', 'jul2313', 'aug1011', 'dec2712', 'apr0513', 'nov0610', 'aug1714' ];
+	// var week = [ 'apr0813', 'dec1614', 'apr0214', 'apr0110', 'apr3010', 'apr0911', 'aug3010' ];
 	var days = [ 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday' ];
 	var url = window.location.href;
 	var paramIndex = url.indexOf( '?day=' );
