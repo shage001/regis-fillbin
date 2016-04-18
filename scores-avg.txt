@@ -1,0 +1,14 @@
+# monday
+94.94	85.92
+# tuesday
+94.12	84.22
+# wednesday
+94.55	84.89
+# thursday
+92.96	81.68
+# friday
+94.91	86.01
+# saturday
+94.97	86.43
+# sunday
+93.76	83.36
