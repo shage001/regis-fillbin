@@ -1,6 +1,6 @@
 # Sam Hage
 # Thesis
-# 12/2015
+# 4/2016
 # A .puz parser. Uses Sam Mullen's API https://github.com/samullen/acrosslite
 
 require 'acrosslite'
@@ -127,7 +127,7 @@ Dir.foreach( PUZZLE_PATH ) do
 	skeleton_file.close
 
 
-	## create skeleton file ##
+	## create solution file ##
 	solution_file = File.open( DEST_PATH + puzzle_date + "/" + puzzle_date + "-solution.txt", "w" )
 
 	solution = ac.solution
