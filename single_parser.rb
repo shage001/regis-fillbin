@@ -8,7 +8,6 @@ require 'acrosslite'
 
 DAYS = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ]
 DAYS_SHORT = [ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" ]
-MONTHS = [ "", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec" ]
 PUZZLE_PATH = "/Users/samhage/Downloads/"
 DEST_PATH = "puzzles/"
 
@@ -40,7 +39,11 @@ filenames.each { # find most recent puzzle
 
 ac = Acrosslite.new( :filepath => PUZZLE_PATH + puzzle_name )
 
+## get puzzle name/date in my format, then write to log file ##
 puzzle_date = File.basename( puzzle_name, ".puz" ).downcase
+log_file = File.open( "log.txt", "w" )
+log_file.write( puzzle_date )
+log_file.close
 
 ## find day of the week by scanning the puzzle file ##
 file = File.open( PUZZLE_PATH + puzzle_name, "r+" )

@@ -44,7 +44,17 @@ def main():
 		allPuzzles = True
 
 	if downloads: # pull latest puzzle from downloads
-		pass
+
+		## parse the puzzle out of downloads ##
+		os.system( './single_parser.rb' )
+		with open( 'log.txt', 'r' ) as log_file:
+			puzzle_name = log_file.readline()
+		log_file.close()
+
+		## solve the puzzle ##
+		puzzle_solver.fill( puzzle_name )
+		diff = evaluate.compare_results( puzzle_name )
+		evaluate.score_puzzle( diff )
 
 	elif allPuzzles: # test all puzzles
 		## record puzzles done so far ##
@@ -66,10 +76,10 @@ def main():
 			done_file.close()
 
 	else: # do a single puzzle
-		puzzle_name = WEEK[0]
+		# puzzle_name = WEEK[0]
 		# puzzle_name = 'oct0515'
 		# puzzle_name = 'dec3014'
-		# puzzle_name = 'jan2710'
+		puzzle_name = 'jan2710'
 		puzzle_solver.fill( puzzle_name )
 		diff = evaluate.compare_results( puzzle_name )
 		evaluate.score_puzzle( diff )
